@@ -1,11 +1,15 @@
-function isPrime(n) {
-  if (n <= 1) return false;
-  if (n <= 3) return true; 
+function modularExponentiation(base, expo, modulo) {
+   if (modulo === 1) {
+      return 0;
+   }
 
-  if (n % 2 === 0 || n % 3 === 0) return false;
+   let value = 1;
 
-  for (let i = 5; i * i <= n; i = i + 6) {
-    if (n % i === 0 || n % (i + 2) === 0) return false;
-  }
-  return true;
+   for (let i = 0; i < expo; i++) {
+      value = (value * base) % modulo;
+   }
+
+   return value;
 }
+
+console.log(modularExponentiation(2, 3, 5));
