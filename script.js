@@ -16,6 +16,22 @@ function maxDivide(num, divisor) {
    return num;
 }
 
-console.log(isUgly(6));   // true
-console.log(isUgly(14));  // false
-console.log(isUgly(25));  // true
+
+
+function firstNuglyNumbers(n) {
+    let counter = 0;
+    let arr = [];
+    let currentNumber = 1; 
+
+    while( counter <n ) {
+      if(isUgly(currentNumber)) {
+         arr.push(currentNumber);
+         counter ++;
+      }
+      currentNumber++;
+    } 
+
+    return arr;
+}
+
+console.log(firstNuglyNumbers(10));
