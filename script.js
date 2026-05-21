@@ -3,13 +3,22 @@ function modularExponentiation(base, expo, modulo) {
       return 0;
    }
 
-   let value = 1;
+   let result = 1;
+   base = base % modulo;
 
-   for (let i = 0; i < expo; i++) {
-      value = (value * base) % modulo;
+   while( expo > 0) {
+
+      if( expo % 2 !== 0) {
+         result = (result * base) % modulo; 
+      }
+
+      base = ( base *  base ) % modulo;
+      expo = Math.floor( expo / 2);
    }
 
-   return value;
+   return result;
+
+   
 }
 
 console.log(modularExponentiation(2, 3, 5));
