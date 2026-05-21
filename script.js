@@ -1,24 +1,21 @@
-function modularExponentiation(base, expo, modulo) {
-   if (modulo === 1) {
-      return 0;
-   }
+function isUgly(num) {
+   if (num <= 0) return false;
 
-   let result = 1;
-   base = base % modulo;
+   num = maxDivide(num, 2);
+   num = maxDivide(num, 3);
+   num = maxDivide(num, 5);
 
-   while( expo > 0) {
-
-      if( expo % 2 !== 0) {
-         result = (result * base) % modulo; 
-      }
-
-      base = ( base *  base ) % modulo;
-      expo = Math.floor( expo / 2);
-   }
-
-   return result;
-
-   
+   return num === 1;
 }
 
-console.log(modularExponentiation(2, 3, 5));
+function maxDivide(num, divisor) {
+   while (num % divisor === 0) {
+      num = num / divisor;
+   }
+
+   return num;
+}
+
+console.log(isUgly(6));   // true
+console.log(isUgly(14));  // false
+console.log(isUgly(25));  // true
