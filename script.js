@@ -1,37 +1,15 @@
-function isUgly(num) {
-   if (num <= 0) return false;
+function countOccurances(str,val) {
+   let count = 0;
+   let pos = str.indexOf(val);
 
-   num = maxDivide(num, 2);
-   num = maxDivide(num, 3);
-   num = maxDivide(num, 5);
-
-   return num === 1;
-}
-
-function maxDivide(num, divisor) {
-   while (num % divisor === 0) {
-      num = num / divisor;
+   while( pos !== -1) {
+      count++;
+      pos = str.indexOf(val, pos+1);
    }
 
-   return num;
+   return count;
 }
 
+let str =  "He's my king from this day until his last day";
 
-
-function firstNuglyNumbers(n) {
-    let counter = 0;
-    let arr = [];
-    let currentNumber = 1; 
-
-    while( counter <n ) {
-      if(isUgly(currentNumber)) {
-         arr.push(currentNumber);
-         counter ++;
-      }
-      currentNumber++;
-    } 
-
-    return arr;
-}
-
-console.log(firstNuglyNumbers(10));
+console.log(countOccurances(str,"i"));
