@@ -1,15 +1,19 @@
-function countOccurances(str,val) {
-   let count = 0;
-   let pos = str.indexOf(val);
+const DICTIONARY = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("");
 
-   while( pos !== -1) {
-      count++;
-      pos = str.indexOf(val, pos+1);
+function base62Encoding(DICTIONARY, num) {
+
+   const base = DICTIONARY.length;
+   let encoded = "";
+   
+   while(num > 0) {
+      let remainder = num % base;
+
+      encoded = encoded + DICTIONARY[remainder];
+
+      num = Math.floor(num / base);
    }
 
-   return count;
+   return encoded.split("").reverse().join("");
 }
 
-let str =  "He's my king from this day until his last day";
-
-console.log(countOccurances(str,"i"));
+console.log(base62Encoding(DICTIONARY, 125));
