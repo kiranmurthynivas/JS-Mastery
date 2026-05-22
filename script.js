@@ -1,19 +1,16 @@
 const DICTIONARY = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("");
 
-function base62Encoding(DICTIONARY, num) {
+function base62Decoding(id) {
 
    const base = DICTIONARY.length;
-   let encoded = "";
-   
-   while(num > 0) {
-      let remainder = num % base;
+   let decoded = 0;
 
-      encoded = encoded + DICTIONARY[remainder];
-
-      num = Math.floor(num / base);
+   for(let i=0; i < id.length; i++) {
+      decoded = decoded * base + DICTIONARY.indexOf(id.charAt(i));
    }
 
-   return encoded.split("").reverse().join("");
+   return decoded;
+   
 }
 
-console.log(base62Encoding(DICTIONARY, 125));
+console.log(base62Decoding("cb"));
