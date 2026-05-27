@@ -1,20 +1,17 @@
-function twoSum(arr , target) {
+function countFrequency(arr) {
 
-  const map = new Map();
+   let map = new Map();
 
-  for(let i =0; i<arr.length; i++) {
-   let current =  arr[i];
-    let needed = target - arr[i];
+   for(let i=0; i<arr.length; i++) {
+      if(map.has(arr[i])) {
+         map.set(arr[i], map.get(arr[i])+1);
+      } else {
+         map.set(arr[i],1);
+      }
+   }
 
-    if(map.has(needed)) {
-      return [map.get(needed) , i];
-    } else {
-      map.set(current, i);
-    }
-  }
-  return -1;
+   console.log(map);
 }
+let arr = [1,2,1,4,2,5,4,6,2,5,2];
 
-let arr = [2,6,7,3,9,1];
-
-console.log(twoSum(arr,10));
+countFrequency(arr);
