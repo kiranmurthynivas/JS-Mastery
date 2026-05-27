@@ -1,15 +1,20 @@
 function twoSum(arr , target) {
 
-   for(let i=0; i<arr.length; i++) {
-      for(let j=i+1; j< arr.length; j++) {
-         if(arr[i]+arr[j] === target) {
-            return [i,j];
-         }
-      }
-   }
-   return -1;
+  const map = new Map();
+
+  for(let i =0; i<arr.length; i++) {
+   let current =  arr[i];
+    let needed = target - arr[i];
+
+    if(map.has(needed)) {
+      return [map.get(needed) , i];
+    } else {
+      map.set(current, i);
+    }
+  }
+  return -1;
 }
 
-let arr = [1,2,3,4,5];
+let arr = [2,6,7,3,9,1];
 
-console.log(twoSum(arr,9));
+console.log(twoSum(arr,10));
